@@ -59,7 +59,7 @@
       <Reference Include="$(UnityEngineDlls)UnityEngine.AIModule.dll" />
 
       <Reference Include="$(UnityAssembliesDir)Unity.InputSystem.dll" />
-      <!-- <Reference Include="$(UnityAssembliesDir)Duality.Unity.dll" /> -->
+      <Reference Include="$(UnityAssembliesDir)Duality.Unity.dll" />
 
 
       <!-- References to any Dependencies -->
