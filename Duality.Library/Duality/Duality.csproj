@@ -1,0 +1,94 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <ProjectName>Duality</ProjectName>
+    <AssemblyName>Duality</AssemblyName>
+    <TargetFramework>netstandard2.1</TargetFramework>
+
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+  </PropertyGroup>
+
+  <Target Name="Setup" BeforeTargets="BeforeResolveReferences">
+    <!-- Read the Unity Editor path from the Duality.Library.config file -->
+    <XmlPeek XmlInputPath="../Duality.Library.config" Query="AppSettings/add[@key='UnityEditorPath']/@value">
+      <Output TaskParameter="Result" PropertyName="UnityEditorDir" />
+    </XmlPeek>
+
+    <Error Text="The UnityEditor path value was not set in the Duality.Library.config file." Condition=" $(UnityEditorDir) == '' " />
+    <Error Text="The UnityEditor path does not exist. '$(UnityEditorDir)'" Condition="!Exists($(UnityEditorDir))" />
+
+    <XmlPeek XmlInputPath="../Duality.Library.config" Query="AppSettings/add[@key='UnityProjectName']/@value">
+      <Output TaskParameter="Result" PropertyName="UnityProjectName" />
+    </XmlPeek>
+
+    <Error Text="The UnityProjectName value was not set in the Duality.Library.config file." Condition=" $(UnityProjectName) == '' " />
+
+    <!-- Setup Paths -->
+    <PropertyGroup>
+      <!-- Directories for each unity project -->
+      <UnityAssetDir>$(SolutionDir)..\$(UnityProjectName)\Assets\</UnityAssetDir>
+      <UnityAssembliesDir>$(SolutionDir)..\$(UnityProjectName)\Library\ScriptAssemblies\</UnityAssembliesDir>
+
+      <!-- Path to the UnityEditor -->
+      <UnityEngineDlls>$(UnityEditorDir)Data\Managed\UnityEngine\</UnityEngineDlls>
+      
+      <!-- Path to the shared dependencies -->
+      <!-- <Dependencies>$(SolutionDir)Dependencies\</Dependencies> -->
+    </PropertyGroup>
+    
+    <Error Text="The Unity Project Asset path does not exist. '$(UnityAssetDir)'" Condition="!Exists($(UnityAssetDir))" />
+    <Error Text="The UnityEngine Dlls path does not exist. '$(UnityEngineDlls)'" Condition="!Exists($(UnityEngineDlls))" />
+    <!-- <Error Text="The Dependencies path does not exist. '$(Dependencies)'" Condition="!Exists($(Dependencies))" /> -->
+    
+    <!-- <ItemGroup>
+      <DependenciesGroup Include="$(Dependencies)DarkRift.dll" />
+    </ItemGroup> -->
+
+    <!-- Setup References -->
+    <ItemGroup>
+      <!-- References to any required Unity Dlls -->
+      <Reference Include="$(UnityEngineDlls)UnityEngine.dll" />
+      <Reference Include="$(UnityEngineDlls)UnityEngine.CoreModule.dll" />
+      <Reference Include="$(UnityEngineDlls)UnityEngine.AnimationModule.dll" />
+      <Reference Include="$(UnityEngineDlls)UnityEngine.PhysicsModule.dll" />
+      <Reference Include="$(UnityEngineDlls)UnityEngine.InputModule.dll" />
+      <Reference Include="$(UnityEngineDlls)UnityEngine.InputLegacyModule.dll" />
+      <Reference Include="$(UnityEngineDlls)UnityEngine.UIModule.dll" />
+      <Reference Include="$(UnityEngineDlls)UnityEngine.UIElementsModule.dll" />
+      <Reference Include="$(UnityEngineDlls)UnityEngine.VehiclesModule.dll" />
+      <Reference Include="$(UnityEngineDlls)UnityEngine.AIModule.dll" />
+
+      <Reference Include="$(UnityAssembliesDir)Unity.InputSystem.dll" />
+      <!-- <Reference Include="$(UnityAssembliesDir)Duality.Unity.dll" /> -->
+
+
+      <!-- References to any Dependencies -->
+      <!-- <Reference Include="@(DependenciesGroup)" /> -->
+    </ItemGroup>
+
+    <!-- Setup Output Locations for built DLLs -->
+    <ItemGroup>
+      <DeployPath Include="$(UnityAssetDir)" />
+    </ItemGroup>
+
+    <!-- All files to be copied into the DeployPaths -->
+    <ItemGroup>
+      <CopyGroup Include="$(SolutionDir)$(ProjectName)\$(OutDir)$(TargetFileName)" />
+      <CopyGroup Include="$(SolutionDir)$(ProjectName)\$(OutDir)$(TargetName).pdb" />
+    </ItemGroup>
+  </Target>
+
+  <!-- Batch: Copy all files defined in the CopyGroup into each DeployPath -->
+  <Target Name="CopyToUnity" AfterTargets="SetupReferences;Build" Outputs="%(DeployPath.Identity)">
+    <PropertyGroup>
+      <Destination>%(DeployPath.Identity)</Destination>
+    </PropertyGroup>
+
+    <!-- Debug display target copy path and copied files -->
+    <Message Text="$(AssemblyName) -> Copied to '$(Destination)'" Importance="High" />
+    <Message Text="    %(CopyGroup.Identity)" />
+
+    <Copy SourceFiles="@(CopyGroup)" DestinationFolder="$(Destination)Plugins\" />
+    <!-- <Copy SourceFiles="@(DependenciesGroup)" DestinationFolder="$(Destination)Plugins\Dependencies\" Condition="Exists('@(DependenciesGroup)')" /> -->
+  </Target>
+</Project>
