@@ -26,7 +26,7 @@ namespace Duality.Unity
                     ""id"": ""9f106bbe-9a4c-476b-baba-52ed42d4df4b"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": """"
+                    ""interactions"": ""Hold""
                 },
                 {
                     ""name"": ""Move"",
