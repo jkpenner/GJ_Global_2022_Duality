@@ -17,7 +17,7 @@ namespace Duality
         public Portal ConnectedPortal => connectedPortal;
         public World World => world;
 
-        async void OnTriggerEnter(Collider other)
+        void OnTriggerEnter(Collider other)
         {
             if (objects.Contains(other.gameObject))
             {
@@ -26,7 +26,7 @@ namespace Duality
 
             // Flip objects current world if a world object
             var worldObject = other.GetComponent<IWorldObject>();
-            if (worldObject is null)
+            if (worldObject is null || worldObject.IgnorePortals)
             {
                 return;
             }

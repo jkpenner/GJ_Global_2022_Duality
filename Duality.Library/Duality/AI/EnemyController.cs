@@ -4,7 +4,7 @@ using UnityEngine.AI;
 namespace Duality
 {
     [RequireComponent(typeof(NavMeshAgent))]
-    public class EnemyController : MonoBehaviour//, IWorldObject
+    public class EnemyController : MonoBehaviour, IHasSpawnPoint, IWorldObject
     {
         [SerializeField] World activeWorld = World.One;
         [SerializeField] float range = 5f;
@@ -20,6 +20,9 @@ namespace Duality
         private PlayerController targetPlayer = null;
         private Portal targetPortal = null;
         private float targetForgetCounter = 0f;
+
+        public ObjectSpawn Spawn { get; set; }
+        public bool IgnorePortals => true;
 
         private void Awake()
         {
@@ -157,16 +160,9 @@ namespace Duality
             }
         }
 
-        // public void WrapPosition(Vector3 position, Quaternion rotation)
-        // {
-        //     agent.updatePosition = false;
-        //     agent.updateRotation = false;
+        public void WrapPosition(Vector3 position, Quaternion rotation)
+        {
 
-        //     agent.Warp(position);
-        //     agent.transform.rotation = rotation;
-
-        //     agent.updatePosition = true;
-        //     agent.updateRotation = true;
-        // }
+        }
     }
 }

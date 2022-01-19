@@ -7,6 +7,7 @@ namespace Duality
 {
     public interface IWorldObject
     {
+        bool IgnorePortals { get; }
         void SetWorld(World world);
         void FlipWorld();
         void WrapPosition(Vector3 position, Quaternion rotation);
@@ -18,7 +19,7 @@ namespace Duality
 
     [AddComponentMenu("Duality/Player Controller")]
     [RequireComponent(typeof(CharacterController))]
-    public class PlayerController : MonoBehaviour, IWorldObject
+    public class PlayerController : MonoBehaviour, IWorldObject, IHasSpawnPoint, IKillable
     {
         [SerializeField] Shoot shoot = null;
 
@@ -39,6 +40,9 @@ namespace Duality
         [SerializeField] World activeWorld = World.One;
 
         public World ActiveWorld => activeWorld;
+
+        public ObjectSpawn Spawn { get; set; }
+        public bool IgnorePortals => false;
 
         private void Awake()
         {
@@ -119,6 +123,19 @@ namespace Duality
             {
                 shoot?.Fire();
             }
+        }
+
+        public void Kill()
+        {
+            if (Spawn is null)
+            {
+                Debug.Log("Player Killed, but no spawn assigned.");
+                return;
+            }
+
+            cc.enabled = false;
+            Spawn.Respawn(this.gameObject);
+            cc.enabled = true;
         }
     }
 }

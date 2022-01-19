@@ -6,6 +6,7 @@ namespace Duality
     public class Projectile : MonoBehaviour, IWorldObject
     {
         public GunAsset Gun { get; set; }
+        public bool IgnorePortals => false;
 
         [SerializeField] float moveSpeed = 10f;
         [SerializeField] new Rigidbody rigidbody = null;
