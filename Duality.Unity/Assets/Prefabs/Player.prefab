@@ -764,6 +764,7 @@ MonoBehaviour:
   cameraMinAngleX: -45
   cameraMaxAngleX: 80
   cameras: {fileID: 475128497721997556}
+  camera: {fileID: 7487421950950027246}
   activeWorld: 0
 --- !u!114 &4312984130916635119
 MonoBehaviour:

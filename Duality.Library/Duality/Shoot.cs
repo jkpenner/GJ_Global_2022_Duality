@@ -21,10 +21,15 @@ namespace Duality
 
         public void Fire()
         {
-            Fire(asset);
+            Fire(transform.position + transform.forward * 100f, asset);
         }
 
-        public void Fire(GunAsset gun) {
+        public void Fire(Vector3 targetPosition)
+        {
+            Fire(targetPosition, asset);
+        }
+
+        public void Fire(Vector3 targetPosition, GunAsset gun) {
             // Still waiting on a cooldown
             if (IsOnCooldown || spawnPoints.Length == 0)
             {
@@ -35,7 +40,10 @@ namespace Duality
             var spawn = spawnPoints[spawnIndex];
             spawnIndex = (spawnIndex + 1) % spawnPoints.Length;
 
-            var proj = Instantiate(gun.Prefab, spawn.position, spawn.rotation);
+            var forward = (targetPosition - spawn.position).normalized;
+            var rotation = Quaternion.LookRotation(forward, spawn.up);
+
+            var proj = Instantiate(gun.Prefab, spawn.position, rotation);
             proj.Gun = gun;
 
             // Reset the fire counter

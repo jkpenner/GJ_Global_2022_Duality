@@ -36,6 +36,7 @@ namespace Duality
 
         [Header("Camera Settings")]
         [SerializeField] Transform cameras = null;
+        [SerializeField] new Camera camera = null;
 
         [SerializeField] World activeWorld = World.One;
 
@@ -121,7 +122,25 @@ namespace Duality
 
             if (isFiring)
             {
-                shoot?.Fire();
+                if (camera != null)
+                {
+                    var ray = camera.ScreenPointToRay(new Vector3(
+                        Screen.width / 2f, (Screen.height / 10f) * 4f, 0f
+                    ));
+                    Debug.DrawRay(ray.origin, ray.direction * 10f, Color.red, 1f);
+
+                    Vector3 targetPosition = ray.GetPoint(100f);
+                    if (Physics.Raycast(ray.origin, ray.direction, out var hit, 100f, int.MaxValue))
+                    {
+                        targetPosition = hit.point;
+                    }
+
+                    shoot?.Fire(targetPosition);
+                }
+                else
+                {
+                    shoot?.Fire();
+                }
             }
         }
 
