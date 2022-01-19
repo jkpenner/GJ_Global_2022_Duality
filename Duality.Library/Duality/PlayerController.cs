@@ -35,8 +35,6 @@ namespace Duality
 
         [Header("Camera Settings")]
         [SerializeField] Transform cameras = null;
-        [SerializeField] Camera cameraWorldOne = null;
-        [SerializeField] Camera cameraWorldTwo = null;
 
         [SerializeField] World activeWorld = World.One;
 
@@ -87,8 +85,8 @@ namespace Duality
         public void SetWorld(World world)
         {
             activeWorld = world;
-            cameraWorldOne.gameObject.SetActive(world == World.One);
-            cameraWorldTwo.gameObject.SetActive(world == World.Two);
+            // cameraWorldOne.gameObject.SetActive(world == World.One);
+            // cameraWorldTwo.gameObject.SetActive(world == World.Two);
         }
 
         public void WrapPosition(Vector3 position, Quaternion rotation)
@@ -113,7 +111,7 @@ namespace Duality
             var moveInput = userInput.Player.Move.ReadValue<Vector2>();
             var movement = new Vector3(moveInput.x, 0f, moveInput.y);
             movement = cc.transform.TransformDirection(movement);
-            movement += Vector3.down * 8f;
+            movement += -transform.up * 2f;
 
             cc.Move(movement * moveSpeed * Time.deltaTime);
 
