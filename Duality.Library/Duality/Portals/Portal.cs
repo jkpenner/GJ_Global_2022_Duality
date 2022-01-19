@@ -64,19 +64,5 @@ namespace Duality
         {
             this.objects.Add(other);
         }
-
-        void OnDrawGizmos()
-        {
-            if (connectedPortal is null)
-            {
-                return;
-            }
-
-            Gizmos.color = Color.green;
-            Gizmos.DrawLine(
-                transform.position + Vector3.up * 2f,
-                connectedPortal.transform.position + Vector3.up * 2f
-            );
-        }
     }
 }
