@@ -24,7 +24,32 @@ namespace Duality
 
         private void OnCollisionEnter(Collision collision)
         {
-            Instantiate(Gun.ImpactPrefab, transform.position, transform.rotation);
+            var damagable = collision.gameObject.GetComponent<IDamagable>();
+            if (damagable is null)
+            {
+                damagable = collision.gameObject.GetComponentInParent<IDamagable>();
+            }
+            
+            // If the target can not be damage then just spawn impact and destory this.
+            if (damagable is null)
+            {
+                Debug.Log($"Hit {collision.gameObject.name}");
+                Instantiate(Gun.ImpactPrefab, transform.position, transform.rotation);
+                Destroy(this.gameObject);
+                return;
+            }
+
+            // If hit a damage, but no damage was done spawn the correct prefab.
+            if (damagable.Damage(Gun.DamageAmount, Gun.DamageType))
+            {
+                Debug.Log("Did damage to the target");
+                Instantiate(Gun.ImpactPrefab, transform.position, transform.rotation);
+            }
+            else
+            {   
+                Instantiate(Gun.NoDamageImpactPrefab, transform.position, transform.rotation);
+            }
+
             Destroy(this.gameObject);
         }
 

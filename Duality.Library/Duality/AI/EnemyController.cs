@@ -4,7 +4,7 @@ using UnityEngine.AI;
 namespace Duality
 {
     [RequireComponent(typeof(NavMeshAgent))]
-    public class EnemyController : MonoBehaviour, IHasSpawnPoint, IWorldObject
+    public class EnemyController : MonoBehaviour, IHasSpawnPoint, IWorldObject, IDamagable
     {
         [SerializeField] World activeWorld = World.One;
         [SerializeField] float range = 5f;
@@ -52,7 +52,7 @@ namespace Duality
                 teleportRoutine = StartCoroutine(
                     NavUtility.HandleTeleport(agent, () =>
                     {
-                        Debug.Log("Teleport complete");
+                        // Debug.Log("Teleport complete");
                         teleportRoutine = null;
                         FlipWorld();
                     })
@@ -80,7 +80,7 @@ namespace Duality
                 targetForgetCounter -= Time.deltaTime;
                 if (targetForgetCounter < 0f)
                 {
-                    Debug.Log("Lost player");
+                    // Debug.Log("Lost player");
                     targetPlayer = null;
                 }
             }
@@ -120,7 +120,7 @@ namespace Duality
                     continue;
                 }
 
-                Debug.Log($"Found portal {collider.name}");
+                // Debug.Log($"Found portal {collider.name}");
 
                 // Check if there is an target on the otherside of the portal.
                 var distFromPortal = (portal.transform.position - transform.position).magnitude;
@@ -163,6 +163,12 @@ namespace Duality
         public void WrapPosition(Vector3 position, Quaternion rotation)
         {
 
+        }
+
+        public bool Damage(float amount, DamageTypes damageType)
+        {
+            Destroy(this.gameObject);
+            return true;
         }
     }
 }
