@@ -7,7 +7,7 @@ namespace Duality
     {
         [SerializeField] GameObject prefab = null;
         [SerializeField] bool spawnOnStart = true;
-        [SerializeField] World world = World.One;
+        [SerializeField] World world = World.White;
 
         private void Start()
         {

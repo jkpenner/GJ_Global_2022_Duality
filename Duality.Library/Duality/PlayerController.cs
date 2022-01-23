@@ -16,7 +16,7 @@ namespace Duality
     }
 
     public enum World {
-        One, Two,
+        White, Black,
     }
 
     [AddComponentMenu("Duality/Player Controller")]
@@ -40,7 +40,7 @@ namespace Duality
         [SerializeField] Transform cameras = null;
         [SerializeField] new Camera camera = null;
 
-        [SerializeField] World activeWorld = World.One;
+        [SerializeField] World activeWorld = World.White;
 
         public World ActiveWorld => activeWorld;
 
@@ -87,20 +87,20 @@ namespace Duality
 
         public void FlipWorld()
         {
-            if (activeWorld == World.One)
+            if (activeWorld == World.White)
             {
-                SetWorld(World.Two);
+                SetWorld(World.Black);
             }
             else
             {
-                SetWorld(World.One);
+                SetWorld(World.White);
             }
         }
 
         public void SetWorld(World world)
         {
             activeWorld = world;
-            // cameraWorldOne.gameObject.SetActive(world == World.One);
+            // cameraWorldOne.gameObject.SetActive(world == World.White);
             // cameraWorldTwo.gameObject.SetActive(world == World.Two);
         }
 

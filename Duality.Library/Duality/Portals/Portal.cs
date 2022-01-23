@@ -7,7 +7,7 @@ namespace Duality
     public class Portal : MonoBehaviour
     {
         [SerializeField] Portal connectedPortal = null;
-        [SerializeField] World world = World.One;
+        [SerializeField] World world = World.White;
         [SerializeField] Renderer portalRenderer = null;
 
         public bool IsPlaced { get; private set; } = true;

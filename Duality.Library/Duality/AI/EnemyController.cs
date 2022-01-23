@@ -6,7 +6,6 @@ namespace Duality
     [RequireComponent(typeof(NavMeshAgent))]
     public class EnemyController : MonoBehaviour, IHasSpawnPoint, IWorldObject, IDamagable
     {
-        [SerializeField] World activeWorld = World.One;
         [SerializeField] float range = 5f;
         [SerializeField] float targetForgetTime = 5f;
 
@@ -17,6 +16,7 @@ namespace Duality
         private Coroutine teleportRoutine = null;
 
 
+        [SerializeField] World activeWorld = World.White;
         private PlayerController targetPlayer = null;
         private Portal targetPortal = null;
         private float targetForgetCounter = 0f;
@@ -150,13 +150,13 @@ namespace Duality
 
         public void FlipWorld()
         {
-            if (activeWorld == World.One)
+            if (activeWorld == World.White)
             {
-                SetWorld(World.Two);
+                SetWorld(World.Black);
             }
             else
             {
-                SetWorld(World.One);
+                SetWorld(World.White);
             }
         }
 
