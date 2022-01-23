@@ -766,6 +766,9 @@ MonoBehaviour:
   cameras: {fileID: 475128497721997556}
   camera: {fileID: 7487421950950027246}
   activeWorld: 0
+  worldMaterials:
+  - {fileID: 2100000, guid: cb67a7d4243309d4f8cbd3c054fc9697, type: 2}
+  - {fileID: 2100000, guid: 63b7676ddb667244da3d69b821ecd096, type: 2}
 --- !u!114 &4312984130916635119
 MonoBehaviour:
   m_ObjectHideFlags: 0

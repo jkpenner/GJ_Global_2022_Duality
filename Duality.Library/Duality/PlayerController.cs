@@ -1,7 +1,9 @@
 using System;
+using System.Collections.Generic;
 using Duality.Unity;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 namespace Duality
 {
@@ -45,12 +47,20 @@ namespace Duality
         public ObjectSpawn Spawn { get; set; }
         public bool IgnorePortals => false;
 
+        [SerializeField] List<Material> worldMaterials = new List<Material>();
+
         private void Awake()
         {
             cc = GetComponent<CharacterController>();
             userInput = new UserInput();
 
             SetWorld(activeWorld);
+
+            var gm = FindObjectOfType<GameManager>();
+            if (gm != null)
+            {
+                gm.SetMainCamera(camera);
+            }
         }
 
         private void OnEnable()
@@ -141,6 +151,11 @@ namespace Duality
                 {
                     shoot?.Fire();
                 }
+            }
+
+            foreach(var mat in worldMaterials)
+            {
+                mat.SetVector("WorldPosition", transform.position);
             }
         }
 

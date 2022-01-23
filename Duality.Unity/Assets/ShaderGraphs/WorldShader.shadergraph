@@ -1603,7 +1603,7 @@
     },
     "m_Name": "WorldPosition",
     "m_DefaultReferenceName": "Vector3_28a97e641c734acaa34923ee118657d1",
-    "m_OverrideReferenceName": "",
+    "m_OverrideReferenceName": "WorldPosition",
     "m_GeneratePropertyBlock": true,
     "m_Precision": 0,
     "overrideHLSLDeclaration": false,
