@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8991586863058339077
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 4
 --- !u!21 &2100000
 Material:
   serializedVersion: 6
@@ -7,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DarkMaterial
-  m_Shader: {fileID: -6465566751694194690, guid: 6f08eb1fd469df941823f9b41a40785b, type: 3}
+  m_Name: EnemyRed
+  m_Shader: {fileID: -6465566751694194690, guid: 33860950f1c53b3488a29f56dc37b723, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -76,9 +89,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_0bc50dfbaa1a4f729b40313224e7cc0a: 0.05
-    - Vector1_4efe656640914061b8b8af67bf690862: 10
-    - Vector1_6800ba0302744d1b9e47416b0e78ca35: 1
+    - Vector1_09601aee5de04a8685e7e0d2ea9960a3: 0.1
+    - Vector1_3829fcaf4afe4d558f5890f14c969259: 200
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -106,25 +118,9 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_1c48aac0c5fc4b12b396c7d6a721c30a: {r: 0.15913136, g: 0.19986315, b: 0.2264151, a: 0}
-    - Color_c92c63ceb7d14430ac930a77906878a2: {r: 5.992157, g: 1.4117647, b: 0, a: 1}
-    - Vector3_28a97e641c734acaa34923ee118657d1: {r: 0, g: 0, b: 0, a: 0}
-    - WorldPosition: {r: -3.784178, g: 2.2343428, b: -0.5330379, a: 0}
+    - Color_924e611c52aa48babb611224422d25d9: {r: 2, g: 0, b: 0, a: 1}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &7680969872440961508
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 4
