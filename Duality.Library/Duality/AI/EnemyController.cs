@@ -16,7 +16,13 @@ namespace Duality
         private Coroutine teleportRoutine = null;
 
 
+        [Header("World Settings")]
         [SerializeField] World activeWorld = World.White;
+        [SerializeField] EnemyVisual blackWorldVisual = null;
+        [SerializeField] EnemyVisual whiteWorldVisual = null;
+        [SerializeField] bool flipWorldVisuals = false;
+
+
         private PlayerController targetPlayer = null;
         private Portal targetPortal = null;
         private float targetForgetCounter = 0f;
@@ -24,14 +30,46 @@ namespace Duality
         public ObjectSpawn Spawn { get; set; }
         public bool IgnorePortals => true;
 
+        private EnemyVisual activeVisual = null;
+
         private void Awake()
         {
             agent = GetComponent<NavMeshAgent>();
+            ChangeVisual(activeWorld);
         }
 
         private void CheckPath(Vector3 position, Vector3 target)
         {
 
+        }
+
+        private void ChangeVisual(World world)
+        {
+            if (world == World.White)
+            {
+                if (flipWorldVisuals)
+                {
+                    activeVisual = blackWorldVisual;
+                }
+                else
+                {
+                    activeVisual = whiteWorldVisual;
+                }
+            }
+            else
+            {
+                if (flipWorldVisuals)
+                {
+                    activeVisual = whiteWorldVisual;
+                }
+                else
+                {
+                    activeVisual = blackWorldVisual;
+                }
+            }
+
+            whiteWorldVisual.gameObject.SetActive(whiteWorldVisual == activeVisual);
+            blackWorldVisual.gameObject.SetActive(blackWorldVisual == activeVisual);
         }
 
         private void Update()
@@ -146,6 +184,7 @@ namespace Duality
         public void SetWorld(World world)
         {
             activeWorld = world;
+            ChangeVisual(world);
         }
 
         public void FlipWorld()
