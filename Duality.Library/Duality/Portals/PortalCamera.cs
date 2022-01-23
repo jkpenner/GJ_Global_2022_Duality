@@ -16,11 +16,11 @@ namespace Duality
 
         private RenderTexture[] tempTextures = new RenderTexture[2];
 
-        private Camera mainCamera;
+        [SerializeField] private Camera mainCamera;
 
         private void Awake()
         {
-            mainCamera = GetComponent<Camera>();
+            // mainCamera = GetComponent<Camera>();
             for (int i = 0; i < 2; i++)
             {
                 tempTextures[i] = new RenderTexture(Screen.width, Screen.height, 24, RenderTextureFormat.ARGB32);
@@ -31,7 +31,14 @@ namespace Duality
         {
             for (int i = 0; i < 2; i++)
             {
-                portals[i].Renderer.material.mainTexture = tempTextures[i];
+                var renderer = portals[i].GetComponent<Renderer>();
+                if (renderer is null)
+                {
+                    Debug.LogWarning($"No renderer attached to portal {portals[i]}");
+                    continue;
+                }
+
+                renderer.material.mainTexture = tempTextures[i];
             }
         }
 
@@ -49,32 +56,45 @@ namespace Duality
         {
             if (portals.Any(p => !p.IsPlaced))
             {
+                Debug.Log("One or more portals is not placed, skipping!");
                 return;
             }
 
-            if (portals[0].Renderer.isVisible)
+            if (portals[0].TryGetComponent(out Renderer p0_renderer))
             {
-                portalCamera.targetTexture = tempTextures[0];
-
-                for (int i = iterations - 1; i >= 0; --i)
+                if (p0_renderer.isVisible)
                 {
-                    RenderCamera(portals[0], portals[1], i, src);
+                    portalCamera.targetTexture = tempTextures[0];
+
+                    for (int i = iterations - 1; i >= 0; --i)
+                    {
+                        RenderCamera(portals[0], portals[1], i, src);
+                    }
                 }
             }
 
-            if (portals[1].Renderer.isVisible)
+            if (portals[1].TryGetComponent(out Renderer p1_renderer))
             {
-                portalCamera.targetTexture = tempTextures[1];
-
-                for (int i = iterations - 1; i >= 0; --i)
+                if (p1_renderer.isVisible)
                 {
-                    RenderCamera(portals[1], portals[0], i, src);
+                    portalCamera.targetTexture = tempTextures[1];
+
+                    for (int i = iterations - 1; i >= 0; --i)
+                    {
+                        RenderCamera(portals[1], portals[0], i, src);
+                    }
                 }
             }
         }
 
         private void RenderCamera(Portal inPortal, Portal outPortal, int iterID, ScriptableRenderContext src)
         {
+            if (mainCamera is null)
+            {
+                Debug.LogWarning("No main camera available");
+                return;
+            }
+
             Transform inTransform = inPortal.transform;
             Transform outTransform = outPortal.transform;
 
@@ -99,6 +119,8 @@ namespace Duality
             Plane p = new Plane(-outTransform.forward, outTransform.position);
             Vector4 clipPlaneWorldSpace = new Vector4(p.normal.x, p.normal.y, p.normal.z, p.distance);
             Vector4 clipPlaneCameraSpace = Matrix4x4.Transpose(Matrix4x4.Inverse(portalCamera.worldToCameraMatrix)) * clipPlaneWorldSpace;
+
+
 
             var newMatrix = mainCamera.CalculateObliqueMatrix(clipPlaneCameraSpace);
             portalCamera.projectionMatrix = newMatrix;

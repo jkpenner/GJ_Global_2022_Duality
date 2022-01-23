@@ -8,14 +8,33 @@ namespace Duality
     {
         [SerializeField] Portal connectedPortal = null;
         [SerializeField] World world = World.One;
+        [SerializeField] Renderer portalRenderer = null;
 
-        public bool IsPlaced { get; private set; }
-        public Renderer Renderer { get; private set; }
+        public bool IsPlaced { get; private set; } = true;
 
         private List<GameObject> objects = new List<GameObject>();
 
         public Portal ConnectedPortal => connectedPortal;
         public World World => world;
+
+        
+        public Renderer Renderer => portalRenderer;
+        public RenderTexture RenderTexture { get; set; } = null;
+
+        // private RenderTexture[] renderTextures = new RenderTexture[4];
+        
+
+        private void Awake()
+        {
+            // this.Renderer = GetComponent<Renderer>();
+
+            GenerateRenderTextures();
+        }
+
+        void GenerateRenderTextures()
+        {
+            
+        }
 
         void OnTriggerEnter(Collider other)
         {
