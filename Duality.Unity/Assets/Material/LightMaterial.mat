@@ -109,7 +109,7 @@ Material:
     - Color_1c48aac0c5fc4b12b396c7d6a721c30a: {r: 1, g: 1, b: 1, a: 0}
     - Color_c92c63ceb7d14430ac930a77906878a2: {r: 0, g: 1139.4705, b: 1367.1202, a: 1}
     - Vector3_28a97e641c734acaa34923ee118657d1: {r: 0, g: 0, b: 0, a: 0}
-    - WorldPosition: {r: -3.784178, g: 2.2343428, b: -0.5330379, a: 0}
+    - WorldPosition: {r: -5.7500253, g: 9.9699955, b: -3.9381397, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
