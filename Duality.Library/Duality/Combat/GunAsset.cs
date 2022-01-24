@@ -28,6 +28,6 @@ namespace Duality
         public float SpeedMultiplier => speedMultiplier;
 
         public float DamageAmount => damageAmount;
-        public DamageTypes DamageType => DamageType;
+        public DamageTypes DamageType => damageType;
     }
 }
