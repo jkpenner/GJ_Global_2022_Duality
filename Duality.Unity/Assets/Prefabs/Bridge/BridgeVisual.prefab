@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1307456448314091891}
   - component: {fileID: 3873645433257385401}
   m_Layer: 0
-  m_Name: EnergyBridge
+  m_Name: BridgeVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
