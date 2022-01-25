@@ -95,7 +95,9 @@ namespace Duality
             var positionLocal = transform.InverseTransformPoint(position);
             var forwardLocal = transform.InverseTransformDirection(rotation * Vector3.forward);
 
-            forwardLocal = Quaternion.Euler(0f, 180f, 0f) * forwardLocal;
+            // forwardLocal = Quaternion.Euler(0f, 180f, 0f) * forwardLocal;
+            // forwardLocal.x *= -1f;
+            forwardLocal.z *= -1f;
 
             // Transform offset and forward direction relative to the out portal.
             position = connectedPortal.transform.TransformPoint(positionLocal);
