@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using System.IO;
 using UnityEngine;
 
@@ -52,6 +54,26 @@ namespace Duality
             {
                 worldObject.SetWorld(world);
             }
+        }
+
+        public void RespawnAfter(GameObject target, float time)
+        {
+            if (time <= 0f)
+            {
+                Respawn(target);
+            }
+            else 
+            {
+                StartCoroutine(HandleDelayedRespawn(target, time));
+            }
+        }
+
+        private IEnumerator HandleDelayedRespawn(GameObject target, float time)
+        {
+            target.gameObject.SetActive(false);
+            yield return new WaitForSeconds(time);
+            target.gameObject.SetActive(true);
+            Respawn(target);
         }
     }
 }

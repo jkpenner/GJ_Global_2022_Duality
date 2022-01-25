@@ -21,6 +21,11 @@ namespace Duality
             counter -= Time.deltaTime;
         }
 
+        public void SetGun(GunAsset gunAsset)
+        {
+            asset = gunAsset;
+        }
+
         public void Fire()
         {
             Fire(transform.position + transform.forward * 100f, asset);

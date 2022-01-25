@@ -26,6 +26,7 @@ namespace Duality
         public float CurHealth { get; private set; }
 
         public event System.Action Damaged = null;
+        public event System.Action Changed = null;
         public event System.Action Killed = null;
 
         private void Awake() {
@@ -36,6 +37,17 @@ namespace Duality
         {
             isAlive = true;
             CurHealth = MaxHealth;
+        }
+
+        public void Heal(float amount)
+        {
+            if (amount <= 0f || CurHealth >= MaxHealth)
+            {
+                return;
+            }
+
+            CurHealth = Mathf.Min(CurHealth + amount, MaxHealth);
+            Changed?.Invoke();
         }
 
         public bool Damage(float amount, DamageTypes damageType)
@@ -67,6 +79,7 @@ namespace Duality
 
             CurHealth -= amount;
             Damaged?.Invoke();
+            Changed?.Invoke();
 
             if (CurHealth <= 0f)
             {
@@ -82,6 +95,9 @@ namespace Duality
             }
 
             isAlive = false;
+            CurHealth = 0f;
+
+            Changed?.Invoke();
             Killed?.Invoke();
         }
 

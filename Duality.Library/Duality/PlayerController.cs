@@ -96,6 +96,12 @@ namespace Duality
             userInput.Disable();
         }
 
+        public void SetGun(GunAsset gunAsset)
+        {
+            Debug.Log($"Set gun to {gunAsset.name}");
+            shoot.SetGun(gunAsset);
+        }
+
         public void FlipWorld()
         {
             if (activeWorld == World.White)
