@@ -21,11 +21,15 @@ namespace Duality
 
     [AddComponentMenu("Duality/Player Controller")]
     [RequireComponent(typeof(CharacterController))]
-    public class PlayerController : MonoBehaviour, IWorldObject, IHasSpawnPoint, IKillable
+    [RequireComponent(typeof(Health))]
+    public class PlayerController : MonoBehaviour, IWorldObject, IHasSpawnPoint
     {
         [SerializeField] Shoot shoot = null;
 
         [SerializeField] float moveSpeed = 10.0f;
+
+        [Header("AI Targeting")]
+        [SerializeField] Transform aiTargetingTransform = null;
 
         private CharacterController cc = null;
         private UserInput userInput = null;
@@ -49,8 +53,15 @@ namespace Duality
 
         [SerializeField] List<Material> worldMaterials = new List<Material>();
 
+        public Transform AITargetingTransform => aiTargetingTransform ?? transform;
+
+        public Health Health { get; private set; }
+
         private void Awake()
         {
+            Health = GetComponent<Health>();
+            Health.Killed += OnKilled;
+
             cc = GetComponent<CharacterController>();
             userInput = new UserInput();
 
@@ -114,6 +125,11 @@ namespace Duality
 
         private void Update()
         {
+            if (!Health.IsAlive)
+            {
+                return;
+            }
+
             cameraAngle -= userInput.Player.LookY.ReadValue<float>();
             cameraAngle = Mathf.Clamp(cameraAngle, cameraMinAngleX, cameraMaxAngleX);
 
@@ -159,7 +175,7 @@ namespace Duality
             }
         }
 
-        public void Kill()
+        public void OnKilled()
         {
             if (Spawn is null)
             {
@@ -169,6 +185,7 @@ namespace Duality
 
             cc.enabled = false;
             Spawn.Respawn(this.gameObject);
+            Health.Reset();
             cc.enabled = true;
         }
     }

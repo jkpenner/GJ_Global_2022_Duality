@@ -14,6 +14,8 @@ namespace Duality
 
         public bool IsOnCooldown => counter > 0f;
 
+        public Transform CurrentSpawnPoint => spawnPoints[spawnIndex];
+
         private void Update()
         {
             counter -= Time.deltaTime;

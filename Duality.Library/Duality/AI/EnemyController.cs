@@ -4,7 +4,8 @@ using UnityEngine.AI;
 namespace Duality
 {
     [RequireComponent(typeof(NavMeshAgent))]
-    public class EnemyController : MonoBehaviour, IHasSpawnPoint, IWorldObject, IDamagable
+    [RequireComponent(typeof(Health))]
+    public class EnemyController : MonoBehaviour, IHasSpawnPoint, IWorldObject
     {
         [SerializeField] float range = 5f;
         [SerializeField] float targetForgetTime = 5f;
@@ -22,7 +23,6 @@ namespace Duality
         [SerializeField] EnemyVisual whiteWorldVisual = null;
         [SerializeField] bool flipWorldVisuals = false;
 
-
         private PlayerController targetPlayer = null;
         private Portal targetPortal = null;
         private float targetForgetCounter = 0f;
@@ -32,11 +32,19 @@ namespace Duality
 
         private EnemyVisual activeVisual = null;
 
+        private Vector3 targetPlayerDirection = Vector3.zero;
+
+        public Health Health { get; private set; }
+
         private void Awake()
         {
+            Health = GetComponent<Health>();
+            Health.Killed += OnKilled;
+
             agent = GetComponent<NavMeshAgent>();
             ChangeVisual(activeWorld);
         }
+
 
         private void CheckPath(Vector3 position, Vector3 target)
         {
@@ -74,6 +82,13 @@ namespace Duality
 
         private void Update()
         {
+            if (!Health.IsAlive)
+            {
+                targetPlayer = null;
+                UpdateTargetDestination(null);
+                return;
+            }
+
             CheckIfTargetIsGone();
 
             if (targetPlayer is null)
@@ -84,6 +99,26 @@ namespace Duality
             }
 
             UpdateTargetDestination(targetPlayer);
+
+            // update the aim direction towards the player
+            if (targetPlayer != null)
+            {
+                var currentSpawnPoint = activeVisual.Shoot.CurrentSpawnPoint;
+
+                targetPlayerDirection = CombatUtility.GetShortestVectorTowardsTarget(
+                    currentSpawnPoint.position, targetPlayer.AITargetingTransform.position, range, portalMask
+                );
+
+                CombatUtility.DebugDrawVectorThroughPortal(currentSpawnPoint.position, targetPlayerDirection, Color.green, portalMask);
+
+                activeVisual.Shoot.Fire(
+                    currentSpawnPoint.position + targetPlayerDirection
+                );
+            }
+            else
+            {
+                targetPlayerDirection = Vector3.zero;
+            }
 
             if (agent.isOnOffMeshLink && teleportRoutine is null)
             {
@@ -203,11 +238,17 @@ namespace Duality
         {
 
         }
-
-        public bool Damage(float amount, DamageTypes damageType)
+        
+        private void OnKilled()
         {
-            Destroy(this.gameObject);
-            return true;
+            if (Spawn is null)
+            {
+                Destroy(this.gameObject);
+                return;
+            }
+
+            Spawn.Respawn(this.gameObject);
+            Health.Reset();
         }
     }
 }

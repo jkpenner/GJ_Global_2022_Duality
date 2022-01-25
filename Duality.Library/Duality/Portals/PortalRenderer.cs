@@ -43,7 +43,7 @@ namespace Duality
 
         private void LateUpdate()
         {
-            Debug.Log($"Rendered {debugRenderCount} portals");
+            // Debug.Log($"Rendered {debugRenderCount} portals");
             debugRenderCount = 0;
         }
 

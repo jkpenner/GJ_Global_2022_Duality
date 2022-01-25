@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 2774884656835764205}
   - component: {fileID: -5813338148976048824}
   - component: {fileID: 8840627966748754443}
+  - component: {fileID: 7986588901987661959}
   m_Layer: 0
   m_Name: EarthEnemyVisual
   m_TagString: Untagged
@@ -94,6 +95,19 @@ MonoBehaviour:
   - {fileID: 8100231502344571349}
   - {fileID: 5778928501404153243}
   asset: {fileID: 11400000, guid: fe1c0e904f6c65c4c9d9214fe67bc13d, type: 2}
+--- !u!65 &7986588901987661959
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2774884656835764200}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 1, z: 0.8}
+  m_Center: {x: 0, y: 0.75, z: 0}
 --- !u!1 &3581262138083011467
 GameObject:
   m_ObjectHideFlags: 0

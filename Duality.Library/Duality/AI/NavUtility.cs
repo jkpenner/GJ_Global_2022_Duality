@@ -13,7 +13,7 @@ namespace Duality
             {
                 yield break;
             }
-            Debug.Log("On OffMesh link");
+            // Debug.Log("On OffMesh link");
             var data = agent.currentOffMeshLinkData;
             var oml = data.offMeshLink;
 
@@ -38,7 +38,7 @@ namespace Duality
                 end = oml.startTransform;
             }
 
-            Debug.Log($"Start Portal {start}, End Portal {end}");
+            // Debug.Log($"Start Portal {start}, End Portal {end}");
 
             var oldForward = start.InverseTransformDirection(agent.transform.forward);
             var newForward = end.TransformDirection(oldForward);
@@ -46,7 +46,7 @@ namespace Duality
             agent.enabled = false;
             agent.transform.position = data.endPos;
             agent.transform.rotation = Quaternion.LookRotation(newForward, end.up);
-            Debug.Log($"Up {end.up}");
+            // Debug.Log($"Up {end.up}");
             agent.enabled = true;
             agent.CompleteOffMeshLink();
 

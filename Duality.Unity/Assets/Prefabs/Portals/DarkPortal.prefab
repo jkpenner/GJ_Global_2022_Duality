@@ -50,6 +50,7 @@ MonoBehaviour:
   connectedPortal: {fileID: 0}
   world: 1
   portalRenderer: {fileID: 1369069560391396146}
+  portalTrigger: {fileID: 5545858474546290481}
 --- !u!65 &5545858474546290481
 BoxCollider:
   m_ObjectHideFlags: 0

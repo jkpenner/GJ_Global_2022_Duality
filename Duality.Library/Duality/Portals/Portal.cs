@@ -10,6 +10,8 @@ namespace Duality
         [SerializeField] World world = World.White;
         [SerializeField] Renderer portalRenderer = null;
 
+        [SerializeField] BoxCollider portalTrigger = null;
+
         public bool IsPlaced { get; private set; } = true;
 
         private List<GameObject> objects = new List<GameObject>();
@@ -20,6 +22,7 @@ namespace Duality
         
         public Renderer Renderer => portalRenderer;
         public RenderTexture RenderTexture { get; set; } = null;
+        public BoxCollider PortalTrigger => portalTrigger;
 
         // private RenderTexture[] renderTextures = new RenderTexture[4];
         
@@ -50,7 +53,7 @@ namespace Duality
                 return;
             }
 
-            Debug.Log($"Teleported {other.name}");
+            // Debug.Log($"Teleported {other.name}");
             
             // Transform offset and forward direction relative to the in portal.
             var offset = transform.InverseTransformPoint(other.transform.position);

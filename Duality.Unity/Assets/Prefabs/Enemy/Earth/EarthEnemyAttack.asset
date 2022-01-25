@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 72478941353441772, guid: ae8b1bdde49cd46408792d39a5b5dac6, type: 3}
   impactPrefab: {fileID: 7771767063320648454, guid: 4f2e0cda617528d4b9427aa781c15561, type: 3}
-  noDamageImpactPrefab: {fileID: 0}
-  fireRate: 0
-  lifetime: 0
+  noDamageImpactPrefab: {fileID: 7771767063320648454, guid: 4f2e0cda617528d4b9427aa781c15561, type: 3}
+  fireRate: 0.4
+  lifetime: 2
   speedMultiplier: 1
-  damageAmount: 0
-  damageType: 0
+  damageAmount: 1
+  damageType: 3

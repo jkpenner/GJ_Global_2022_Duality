@@ -47,7 +47,7 @@ namespace Duality
                 teleportRoutine = StartCoroutine(
                     NavUtility.HandleTeleport(agent, () =>
                     {
-                        Debug.Log("Teleport complete");
+                        // Debug.Log("Teleport complete");
                         teleportRoutine = null;
                     })
                 );
