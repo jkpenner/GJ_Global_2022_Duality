@@ -10,6 +10,7 @@ namespace Duality
         [SerializeField] GameObject prefab = null;
         [SerializeField] bool spawnOnStart = true;
         [SerializeField] World world = World.White;
+        [SerializeField] float offset = 0f;
 
         private void Start()
         {
@@ -31,7 +32,10 @@ namespace Duality
                 return;
             }
 
-            var obj = Instantiate(prefab, transform.position, transform.rotation);
+            Vector3 position = transform.position;
+            position.y += offset;
+
+            var obj = Instantiate(prefab, position, transform.rotation);
             
             // Set all objects requiring a spawn point to this one
             foreach (var spawn in obj.GetComponents<IHasSpawnPoint>())
@@ -47,7 +51,10 @@ namespace Duality
 
         public void Respawn(GameObject target)
         {
-            target.transform.position = transform.position;
+            Vector3 position = transform.position;
+            position.y += offset;
+            
+            target.transform.position = position;
             target.transform.rotation = transform.rotation;
 
             foreach(var worldObject in target.GetComponents<IWorldObject>())
