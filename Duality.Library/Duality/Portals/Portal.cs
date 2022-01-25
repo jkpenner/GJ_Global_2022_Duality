@@ -46,6 +46,11 @@ namespace Duality
                 return;
             }
 
+            if (other.GetComponent<Projectile>() != null)
+            {
+                return;
+            }
+
             // Flip objects current world if a world object
             var worldObject = other.GetComponent<IWorldObject>();
             if (worldObject is null || worldObject.IgnorePortals)
@@ -55,26 +60,49 @@ namespace Duality
 
             // Debug.Log($"Teleported {other.name}");
             
-            // Transform offset and forward direction relative to the in portal.
-            var offset = transform.InverseTransformPoint(other.transform.position);
-            var forward = transform.InverseTransformDirection(other.transform.forward);
+            // // Transform offset and forward direction relative to the in portal.
+            // var offset = transform.InverseTransformPoint(other.transform.position);
+            // var forward = transform.InverseTransformDirection(other.transform.forward);
 
 
-            // Transform offset and forward direction relative to the out portal.
-            var newOffset = connectedPortal.transform.TransformPoint(offset);
-            var newForward = connectedPortal.transform.TransformDirection(forward);
-            newForward.x *= -1f;
-            newForward.z *= -1f;
+            // // Transform offset and forward direction relative to the out portal.
+            // var newOffset = connectedPortal.transform.TransformPoint(offset);
+            // var newForward = connectedPortal.transform.TransformDirection(forward);
+            // newForward.x *= -1f;
+            // newForward.z *= -1f;
 
-            var newRotation = Quaternion.LookRotation(newForward, connectedPortal.transform.up);
+            // var newRotation = Quaternion.LookRotation(newForward, connectedPortal.transform.up);
+
+            var position = other.transform.position;
+            var rotation = other.transform.rotation;
+
+            Teleport(ref position, ref rotation);
 
             Debug.DrawRay(transform.position, transform.forward, Color.red, 1f);
-            Debug.DrawRay(transform.position, newForward, Color.red, 1f);
+            Debug.DrawRay(transform.position, rotation * Vector3.forward, Color.red, 1f);
 
             worldObject.FlipWorld();
-            worldObject.WrapPosition(newOffset, newRotation);
+            worldObject.WrapPosition(position, rotation);
 
             connectedPortal.ReceiveObject(other.gameObject);
+        }
+
+        public void Teleport(ref Vector3 position, ref Quaternion rotation)
+        {
+            var start = position;
+
+            // Transform offset and forward direction relative to the in portal
+            var positionLocal = transform.InverseTransformPoint(position);
+            var forwardLocal = transform.InverseTransformDirection(rotation * Vector3.forward);
+
+            forwardLocal = Quaternion.Euler(0f, 180f, 0f) * forwardLocal;
+
+            // Transform offset and forward direction relative to the out portal.
+            position = connectedPortal.transform.TransformPoint(positionLocal);
+            var newForward = connectedPortal.transform.TransformDirection(forwardLocal);
+            rotation = Quaternion.LookRotation(newForward, connectedPortal.transform.up);
+
+            Debug.Log($"Teleported from {name}:{start} to {connectedPortal.name}:{position}");
         }
 
         void OnTriggerExit(Collider other)
