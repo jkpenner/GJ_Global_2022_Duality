@@ -22,3 +22,4 @@ MonoBehaviour:
   speedMultiplier: 10
   damageAmount: 1
   damageType: 2
+  portalFlipAsset: {fileID: 11400000, guid: 12d524a2848237a4e8539179a8e41b21, type: 2}

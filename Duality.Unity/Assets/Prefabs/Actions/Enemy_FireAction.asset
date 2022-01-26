@@ -16,8 +16,10 @@ MonoBehaviour:
   spawnPrefab: {fileID: 295040596847542025, guid: db50727049d0e794fb9fcc19bbabde60, type: 3}
   impactPrefab: {fileID: 7771767063320648454, guid: 2c82dfa9f9200f04b9f1d4bd066075cb, type: 3}
   noDamageImpactPrefab: {fileID: 7771767063320648454, guid: 2c82dfa9f9200f04b9f1d4bd066075cb, type: 3}
+  gunVisualPrefab: {fileID: 0}
   fireRate: 0.25
   lifetime: 2
   speedMultiplier: 1
   damageAmount: 1
   damageType: 1
+  portalFlipAsset: {fileID: 11400000, guid: 3c27b447ae6c283488d9455fe6ce446c, type: 2}

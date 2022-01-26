@@ -19,6 +19,10 @@ namespace Duality
         [Header("Damage")]
         [SerializeField] float damageAmount = 0f;
         [SerializeField] DamageTypes damageType = DamageTypes.None;
+        
+        [Header("Portal Flip")]
+        [SerializeField] GunAsset portalFlipAsset = null;
+
 
 
         public Projectile Prefab => prefab;
@@ -33,5 +37,7 @@ namespace Duality
 
         public float DamageAmount => damageAmount;
         public DamageTypes DamageType => damageType;
+
+        public GunAsset PortalFlipAsset => portalFlipAsset;
     }
 }

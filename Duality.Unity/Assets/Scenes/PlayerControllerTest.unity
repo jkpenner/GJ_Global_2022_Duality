@@ -558,6 +558,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6272598056346869612, guid: 113587135ad0a1040a86e9a3decce494, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7277208075640185925, guid: 113587135ad0a1040a86e9a3decce494, type: 3}
       propertyPath: m_Name
       value: PortalRenderer
@@ -642,7 +646,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6272598056346869612, guid: 113587135ad0a1040a86e9a3decce494, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 113587135ad0a1040a86e9a3decce494, type: 3}
 --- !u!20 &451982694 stripped
 Camera:
@@ -1230,6 +1235,10 @@ PrefabInstance:
     - target: {fileID: 2890871045422203156, guid: eb628e1f12470ec41896fa0059d865bb, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6325727906759765384, guid: eb628e1f12470ec41896fa0059d865bb, type: 3}
+      propertyPath: enableType
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb628e1f12470ec41896fa0059d865bb, type: 3}

@@ -81,7 +81,18 @@ namespace Duality
 
             portal.Teleport(ref position, ref rotation);
 
-            WrapPosition(position, rotation);
+            if (Gun.PortalFlipAsset is null)
+            {
+                WrapPosition(position, rotation);
+            }
+            else
+            {
+                Projectile projectile = Instantiate(Gun.PortalFlipAsset.Prefab, position, rotation);
+                projectile.Gun = Gun.PortalFlipAsset;
+
+                Instantiate(Gun.PortalFlipAsset.SpawnPrefab, position, rotation);
+                Destroy(this.gameObject);
+            }
         }
 
         private bool TryGetDamagableFromTargetOrParent(GameObject gameObject, out IDamagable damagable)
