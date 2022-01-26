@@ -16,7 +16,7 @@ MonoBehaviour:
   impactPrefab: {fileID: 7771767063320648454, guid: 9f8089bfa78e12f4bb7004f36f47ec9a, type: 3}
   noDamageImpactPrefab: {fileID: 0}
   fireRate: 0.3
-  lifetime: 1
-  speedMultiplier: 40
+  lifetime: 5
+  speedMultiplier: 2
   damageAmount: 4
   damageType: 0
