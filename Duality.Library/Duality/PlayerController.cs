@@ -162,9 +162,27 @@ namespace Duality
                     Debug.DrawRay(ray.origin, ray.direction * 10f, Color.red, 1f);
 
                     Vector3 targetPosition = ray.GetPoint(100f);
-                    if (Physics.Raycast(ray.origin, ray.direction, out var hit, 100f, int.MaxValue))
+                    if (Physics.Raycast(ray.origin, ray.direction, out var hit, 100f, int.MaxValue, QueryTriggerInteraction.Collide))
                     {
-                        targetPosition = hit.point;
+                        if (hit.collider.TryGetComponent(out Portal portal))
+                        {
+                            var hitDistance = hit.distance;
+
+                            var startPosition = hit.point;
+                            var startRotation = Quaternion.LookRotation(ray.direction, transform.up);
+
+                            portal.Teleport(ref startPosition, ref startRotation);
+
+                            if (Physics.Raycast(startPosition, startRotation * Vector3.forward, out var portalHit, 100f, int.MaxValue))
+                            {
+                                hitDistance += portalHit.distance;
+                                targetPosition = ray.GetPoint(hitDistance);
+                            }
+                        }
+                        else
+                        {
+                            targetPosition = hit.point;
+                        }
                     }
 
                     shoot?.Fire(targetPosition);
