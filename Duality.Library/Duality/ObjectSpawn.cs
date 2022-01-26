@@ -60,6 +60,7 @@ namespace Duality
             foreach(var worldObject in target.GetComponents<IWorldObject>())
             {
                 worldObject.SetWorld(world);
+                worldObject.WrapPosition(position, transform.rotation);
             }
         }
 

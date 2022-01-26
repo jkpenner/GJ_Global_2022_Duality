@@ -236,7 +236,9 @@ namespace Duality
 
         public void WrapPosition(Vector3 position, Quaternion rotation)
         {
-
+            agent.Warp(position);
+            transform.position = position;
+            transform.rotation = rotation;
         }
         
         private void OnKilled()
