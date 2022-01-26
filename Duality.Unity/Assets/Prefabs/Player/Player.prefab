@@ -421,8 +421,8 @@ MonoBehaviour:
   shoot: {fileID: 4312984130916635119}
   moveSpeed: 10
   aiTargetingTransform: {fileID: 3595690853706137215}
-  cameraMinAngleX: -45
-  cameraMaxAngleX: 80
+  cameraMinAngleX: -89
+  cameraMaxAngleX: 89
   cameras: {fileID: 475128497721997556}
   camera: {fileID: 6263373585044567022}
   activeWorld: 0
