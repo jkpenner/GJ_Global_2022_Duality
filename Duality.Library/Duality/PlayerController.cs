@@ -15,7 +15,8 @@ namespace Duality
         void WrapPosition(Vector3 position, Quaternion rotation);
     }
 
-    public enum World {
+    public enum World
+    {
         White, Black,
     }
 
@@ -57,6 +58,9 @@ namespace Duality
 
         public Health Health { get; private set; }
 
+        [SerializeField] List<Transform> gunParents = new List<Transform>();
+        private List<GunVisual> gunVisuals = new List<GunVisual>();
+
         private void Awake()
         {
             Health = GetComponent<Health>();
@@ -66,6 +70,7 @@ namespace Duality
             userInput = new UserInput();
 
             SetWorld(activeWorld);
+            SetGun(shoot.GunAsset);
 
             var gm = FindObjectOfType<GameManager>();
             if (gm != null)
@@ -98,8 +103,31 @@ namespace Duality
 
         public void SetGun(GunAsset gunAsset)
         {
+            foreach (var visual in gunVisuals)
+            {
+                Destroy(visual.gameObject);
+            }
+            gunVisuals.Clear();
+
             Debug.Log($"Set gun to {gunAsset.name}");
             shoot.SetGun(gunAsset);
+            shoot.ClearSpawnPoints();
+
+
+            foreach (var parent in gunParents)
+            {
+                if (gunAsset.GunVisualPrefab is null)
+                {
+                    shoot.AddSpawnPoint(parent);
+                    continue;
+                }
+
+                var visual = Instantiate(gunAsset.GunVisualPrefab, parent.position, parent.rotation, parent);
+                shoot.AddSpawnPoint(visual.ProjectileSpawnPoint);
+                shoot.AddGunVisual(visual);
+
+                gunVisuals.Add(visual);
+            }
         }
 
         public void FlipWorld()
@@ -152,51 +180,80 @@ namespace Duality
 
             cc.Move(movement * moveSpeed * Time.deltaTime);
 
-            if (isFiring)
+            if (TryGetAimTarget(camera, out Vector3 target))
             {
-                if (camera != null)
+                Debug.Log(target);
+                foreach (var parent in gunParents)
                 {
-                    var ray = camera.ScreenPointToRay(new Vector3(
-                        Screen.width / 2f, (Screen.height / 10f) * 4f, 0f
-                    ));
-                    Debug.DrawRay(ray.origin, ray.direction * 10f, Color.red, 1f);
+                    var forward = (target - parent.position).normalized;
 
-                    Vector3 targetPosition = ray.GetPoint(100f);
-                    if (Physics.Raycast(ray.origin, ray.direction, out var hit, 100f, int.MaxValue, QueryTriggerInteraction.Collide))
-                    {
-                        if (hit.collider.TryGetComponent(out Portal portal))
-                        {
-                            var hitDistance = hit.distance;
+                    // ! Because I'm lazy and don't want to update the gun asset
+                    forward *= -1f;
 
-                            var startPosition = hit.point;
-                            var startRotation = Quaternion.LookRotation(ray.direction, transform.up);
-
-                            portal.Teleport(ref startPosition, ref startRotation);
-
-                            if (Physics.Raycast(startPosition, startRotation * Vector3.forward, out var portalHit, 100f, int.MaxValue))
-                            {
-                                hitDistance += portalHit.distance;
-                                targetPosition = ray.GetPoint(hitDistance);
-                            }
-                        }
-                        else
-                        {
-                            targetPosition = hit.point;
-                        }
-                    }
-
-                    shoot?.Fire(targetPosition);
+                    parent.rotation = Quaternion.LookRotation(forward, transform.up);
                 }
-                else
+
+                if (isFiring)
+                {
+                    shoot?.Fire(target);
+                }
+            }
+            else
+            {
+                if (isFiring)
                 {
                     shoot?.Fire();
                 }
             }
 
-            foreach(var mat in worldMaterials)
+
+
+            foreach (var mat in worldMaterials)
             {
                 mat.SetVector("WorldPosition", transform.position);
             }
+        }
+
+        private bool TryGetAimTarget(Camera camera, out Vector3 target)
+        {
+            if (camera is null)
+            {
+                target = Vector3.zero;
+                return false;
+            }
+
+            var ray = camera.ScreenPointToRay(new Vector3(
+                Screen.width / 2f, (Screen.height / 10f) * 4f, 0f
+            ));
+            Debug.DrawRay(ray.origin, ray.direction * 10f, Color.red, 1f);
+
+            target = ray.GetPoint(100f);
+            if (Physics.Raycast(ray.origin, ray.direction, out var hit, 100f, int.MaxValue, QueryTriggerInteraction.Collide))
+            {
+                if (hit.collider.TryGetComponent(out Portal portal))
+                {
+                    var hitDistance = hit.distance;
+
+                    var startPosition = hit.point;
+                    var startRotation = Quaternion.LookRotation(ray.direction, transform.up);
+
+                    portal.Teleport(ref startPosition, ref startRotation);
+
+                    if (Physics.Raycast(startPosition, startRotation * Vector3.forward, out var portalHit, 100f, int.MaxValue))
+                    {
+                        hitDistance += portalHit.distance;
+                        target = ray.GetPoint(hitDistance);
+                        return true;
+                    }
+                }
+                else
+                {
+                    target = hit.point;
+                    return true;
+                }
+            }
+
+            return true;
         }
 
         public void OnKilled()

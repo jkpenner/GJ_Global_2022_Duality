@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: -39520784, guid: 38858e1a06472884195a3b8b83699c85, type: 3}
   m_Name: Player_FireAction
   m_EditorClassIdentifier: 
-  prefab: {fileID: 72478941353441772, guid: f71532155e12de0469ccf956f0280852, type: 3}
-  spawnPrefab: {fileID: 295040596847542025, guid: db50727049d0e794fb9fcc19bbabde60, type: 3}
+  prefab: {fileID: 72478941353441772, guid: ee963b57a0454a34fb04cb5188a4a0de, type: 3}
+  spawnPrefab: {fileID: 295040596847542025, guid: 20e711e459affe542bc3bb84ed0a27e7, type: 3}
   impactPrefab: {fileID: 7771767063320648454, guid: 2c82dfa9f9200f04b9f1d4bd066075cb, type: 3}
   noDamageImpactPrefab: {fileID: 7771767063320648454, guid: 2c82dfa9f9200f04b9f1d4bd066075cb, type: 3}
-  fireRate: 0.25
+  gunVisualPrefab: {fileID: 6476328406753606989, guid: fdd41adae1db3f844afb8b285c16f344, type: 3}
+  fireRate: 0.075
   lifetime: 2
-  speedMultiplier: 1
+  speedMultiplier: 10
   damageAmount: 1
   damageType: 1

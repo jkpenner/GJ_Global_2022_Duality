@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: -39520784, guid: 38858e1a06472884195a3b8b83699c85, type: 3}
   m_Name: Player_EarthAction
   m_EditorClassIdentifier: 
-  prefab: {fileID: 72478941353441772, guid: ae8b1bdde49cd46408792d39a5b5dac6, type: 3}
-  spawnPrefab: {fileID: 4977813505571586418, guid: e7fe1d59a3952a14ab1bfde2401a9089, type: 3}
+  prefab: {fileID: 72478941353441772, guid: d899dfcae195c1a4c9b636811aaa53b7, type: 3}
+  spawnPrefab: {fileID: 4977813505571586418, guid: f4d75daee1cd6824cae49bd99c5944f0, type: 3}
   impactPrefab: {fileID: 7771767063320648454, guid: 4f2e0cda617528d4b9427aa781c15561, type: 3}
   noDamageImpactPrefab: {fileID: 7771767063320648454, guid: 4f2e0cda617528d4b9427aa781c15561, type: 3}
-  fireRate: 0.4
+  gunVisualPrefab: {fileID: 6476328406753606989, guid: 2286bbcd7d9a43147bf3516ea258e36f, type: 3}
+  fireRate: 0.125
   lifetime: 2
-  speedMultiplier: 1
+  speedMultiplier: 10
   damageAmount: 1
   damageType: 3

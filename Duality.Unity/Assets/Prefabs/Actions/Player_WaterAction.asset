@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: -39520784, guid: 38858e1a06472884195a3b8b83699c85, type: 3}
   m_Name: Player_WaterAction
   m_EditorClassIdentifier: 
-  prefab: {fileID: 72478941353441772, guid: 14847020bb614a64287a11a793d11cc6, type: 3}
-  spawnPrefab: {fileID: 7690776923230661609, guid: 3cd182f9209fee74597ac19bd8d0f12a, type: 3}
+  prefab: {fileID: 72478941353441772, guid: 556e16c39ed3f7a4f9fb7bde0808a370, type: 3}
+  spawnPrefab: {fileID: 7690776923230661609, guid: f8e4081bd229a23428f5afc386847239, type: 3}
   impactPrefab: {fileID: 7771767063320648454, guid: 6268ec1393f6b0d40bb2ec181c2cab5a, type: 3}
   noDamageImpactPrefab: {fileID: 7771767063320648454, guid: 6268ec1393f6b0d40bb2ec181c2cab5a, type: 3}
-  fireRate: 0.4
+  gunVisualPrefab: {fileID: 6476328406753606989, guid: 9b9d72468e4cc444b993e9e15d3f8ad4, type: 3}
+  fireRate: 0.1
   lifetime: 2
-  speedMultiplier: 1
+  speedMultiplier: 10
   damageAmount: 1
   damageType: 2

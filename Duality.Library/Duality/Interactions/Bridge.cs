@@ -37,7 +37,7 @@ namespace Duality
 
         private void OnActivated()
         {
-            Debug.Log("Bridge Activated");
+            // Debug.Log("Bridge Activated");
             SetActiveState(true);
         }
 
