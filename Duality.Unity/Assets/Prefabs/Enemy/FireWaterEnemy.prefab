@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3762890433835360606}
   - component: {fileID: 8564768888825434614}
   - component: {fileID: 2894661487921366529}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: FireWaterEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,9 +87,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3762890433835360606}
     m_Modifications:
+    - target: {fileID: 1137730546953132643, guid: 12f9c867b35deba45a3e9fb512532260, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1375779049140864628, guid: 12f9c867b35deba45a3e9fb512532260, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2394329818670709395, guid: 12f9c867b35deba45a3e9fb512532260, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 2553341823344270363, guid: 12f9c867b35deba45a3e9fb512532260, type: 3}
       propertyPath: m_Name
       value: FireEnemyVisual
+      objectReference: {fileID: 0}
+    - target: {fileID: 2553341823344270363, guid: 12f9c867b35deba45a3e9fb512532260, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2553341823344270366, guid: 12f9c867b35deba45a3e9fb512532260, type: 3}
       propertyPath: m_RootOrder
@@ -134,6 +150,10 @@ PrefabInstance:
     - target: {fileID: 2553341823344270366, guid: 12f9c867b35deba45a3e9fb512532260, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2678195523444827050, guid: 12f9c867b35deba45a3e9fb512532260, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12f9c867b35deba45a3e9fb512532260, type: 3}
@@ -160,9 +180,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3762890433835360606}
     m_Modifications:
+    - target: {fileID: 419177584862258278, guid: b5c820759226f204f8557ff8af6a0282, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804975796723373326, guid: b5c820759226f204f8557ff8af6a0282, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3741458473240964295, guid: b5c820759226f204f8557ff8af6a0282, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 3866835985231216137, guid: b5c820759226f204f8557ff8af6a0282, type: 3}
       propertyPath: m_Name
       value: WaterEnemyVisual
+      objectReference: {fileID: 0}
+    - target: {fileID: 3866835985231216137, guid: b5c820759226f204f8557ff8af6a0282, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3866835985231216140, guid: b5c820759226f204f8557ff8af6a0282, type: 3}
       propertyPath: m_RootOrder
@@ -207,6 +243,10 @@ PrefabInstance:
     - target: {fileID: 3866835985231216140, guid: b5c820759226f204f8557ff8af6a0282, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4034334952796550654, guid: b5c820759226f204f8557ff8af6a0282, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5c820759226f204f8557ff8af6a0282, type: 3}

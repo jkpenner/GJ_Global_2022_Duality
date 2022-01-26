@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: EarthEnemyAttack
   m_EditorClassIdentifier: 
   prefab: {fileID: 72478941353441772, guid: ae8b1bdde49cd46408792d39a5b5dac6, type: 3}
+  spawnPrefab: {fileID: 4977813505571586418, guid: e7fe1d59a3952a14ab1bfde2401a9089, type: 3}
   impactPrefab: {fileID: 7771767063320648454, guid: 4f2e0cda617528d4b9427aa781c15561, type: 3}
   noDamageImpactPrefab: {fileID: 7771767063320648454, guid: 4f2e0cda617528d4b9427aa781c15561, type: 3}
   fireRate: 0.4

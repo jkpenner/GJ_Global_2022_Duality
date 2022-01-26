@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: TestGunAsset
   m_EditorClassIdentifier: 
   prefab: {fileID: 72478941353441772, guid: 15d8de1fe14eb414d8b94b2a4ce543ce, type: 3}
+  spawnPrefab: {fileID: 7771767063320648454, guid: 9f8089bfa78e12f4bb7004f36f47ec9a, type: 3}
   impactPrefab: {fileID: 7771767063320648454, guid: 9f8089bfa78e12f4bb7004f36f47ec9a, type: 3}
   noDamageImpactPrefab: {fileID: 0}
   fireRate: 0.3
   lifetime: 5
-  speedMultiplier: 2
+  speedMultiplier: 50
   damageAmount: 4
   damageType: 0

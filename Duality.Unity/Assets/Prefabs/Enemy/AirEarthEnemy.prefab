@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2922995447378563763}
   - component: {fileID: 7670971414939984411}
   - component: {fileID: 3783885153158510060}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: AirEarthEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,9 +87,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2922995447378563763}
     m_Modifications:
+    - target: {fileID: 685965245312415182, guid: a400b51094c71444dad2bf3a0ec6cf5c, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1538174881633009518, guid: a400b51094c71444dad2bf3a0ec6cf5c, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4178774051847548833, guid: a400b51094c71444dad2bf3a0ec6cf5c, type: 3}
       propertyPath: m_Name
       value: AirEnemyVisual
+      objectReference: {fileID: 0}
+    - target: {fileID: 4178774051847548833, guid: a400b51094c71444dad2bf3a0ec6cf5c, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4178774051847548836, guid: a400b51094c71444dad2bf3a0ec6cf5c, type: 3}
       propertyPath: m_RootOrder
@@ -134,6 +146,18 @@ PrefabInstance:
     - target: {fileID: 4178774051847548836, guid: a400b51094c71444dad2bf3a0ec6cf5c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4298941244548538270, guid: a400b51094c71444dad2bf3a0ec6cf5c, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4591537071613609639, guid: a400b51094c71444dad2bf3a0ec6cf5c, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6626137625717279373, guid: a400b51094c71444dad2bf3a0ec6cf5c, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a400b51094c71444dad2bf3a0ec6cf5c, type: 3}
@@ -160,9 +184,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2922995447378563763}
     m_Modifications:
+    - target: {fileID: 731575313287655129, guid: bbef162a86e25974f9b3c16d29401f4a, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655824899157165447, guid: bbef162a86e25974f9b3c16d29401f4a, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2362077097931593488, guid: bbef162a86e25974f9b3c16d29401f4a, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2654672351652351529, guid: bbef162a86e25974f9b3c16d29401f4a, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 2774884656835764200, guid: bbef162a86e25974f9b3c16d29401f4a, type: 3}
       propertyPath: m_Name
       value: EarthEnemyVisual
+      objectReference: {fileID: 0}
+    - target: {fileID: 2774884656835764200, guid: bbef162a86e25974f9b3c16d29401f4a, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2774884656835764205, guid: bbef162a86e25974f9b3c16d29401f4a, type: 3}
       propertyPath: m_RootOrder
@@ -207,6 +251,10 @@ PrefabInstance:
     - target: {fileID: 2774884656835764205, guid: bbef162a86e25974f9b3c16d29401f4a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581262138083011467, guid: bbef162a86e25974f9b3c16d29401f4a, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbef162a86e25974f9b3c16d29401f4a, type: 3}

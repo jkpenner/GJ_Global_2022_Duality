@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: AirEnemyAttack
   m_EditorClassIdentifier: 
   prefab: {fileID: 72478941353441772, guid: bad7b3d768c78804ab6a4f1a49b847c6, type: 3}
+  spawnPrefab: {fileID: 2962204322417320741, guid: 9419aa3872f30d045968cbf9015067b1, type: 3}
   impactPrefab: {fileID: 7771767063320648454, guid: b14df412396e0724a80a781c7b317957, type: 3}
   noDamageImpactPrefab: {fileID: 7771767063320648454, guid: b14df412396e0724a80a781c7b317957, type: 3}
   fireRate: 0.5

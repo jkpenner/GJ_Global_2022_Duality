@@ -6,6 +6,7 @@ namespace Duality
     public class GunAsset : ScriptableObject
     {
         [SerializeField] Projectile prefab = null;
+        [SerializeField] GameObject spawnPrefab = null;
         [SerializeField] GameObject impactPrefab = null;
         [SerializeField] GameObject noDamageImpactPrefab = null;
 
@@ -20,6 +21,7 @@ namespace Duality
 
 
         public Projectile Prefab => prefab;
+        public GameObject SpawnPrefab => spawnPrefab;
         public GameObject ImpactPrefab => impactPrefab;
         public GameObject NoDamageImpactPrefab => noDamageImpactPrefab;
 

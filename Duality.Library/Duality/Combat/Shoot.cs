@@ -50,6 +50,8 @@ namespace Duality
             var forward = (targetPosition - spawn.position).normalized;
             var rotation = Quaternion.LookRotation(forward, spawn.up);
 
+            Instantiate(gun.SpawnPrefab, spawn.position, rotation);
+
             var proj = Instantiate(gun.Prefab, spawn.position, rotation);
             proj.Gun = gun;
 

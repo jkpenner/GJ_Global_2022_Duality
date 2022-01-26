@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6216864149746796786}
   - component: {fileID: 3976385700784686641}
   - component: {fileID: 4826690720203033174}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 510532816446463787}
   - component: {fileID: 5204668154985169147}
   - component: {fileID: 3361396214332475188}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GunRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   - component: {fileID: 8006838362739313055}
   - component: {fileID: 5884070139079411897}
   - component: {fileID: 6216742132297229742}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GunLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,7 +255,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3595690853706137215}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: TargetPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -287,7 +287,7 @@ GameObject:
   - component: {fileID: 4777588982369681479}
   - component: {fileID: 6967794288673574194}
   - component: {fileID: 4447502462065404196}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -367,7 +367,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8942829753261533942}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SpawnPointRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -398,7 +398,7 @@ GameObject:
   m_Component:
   - component: {fileID: 475128497721997556}
   - component: {fileID: 6675664065637959534}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Cameras
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -438,7 +438,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1616212823357424076}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CameraVisuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -470,7 +470,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5506649542427020581}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SpawnPointLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -500,7 +500,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5879804912290988533}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Visuals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -534,7 +534,7 @@ GameObject:
   - component: {fileID: 7487421950390971399}
   - component: {fileID: 7487421950390971396}
   - component: {fileID: 7487421950390971397}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -628,7 +628,7 @@ GameObject:
   - component: {fileID: 7487421950950027241}
   - component: {fileID: 7487421950950027246}
   - component: {fileID: 7487421950950027240}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: WorldOne
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -736,7 +736,7 @@ GameObject:
   - component: {fileID: 7487421951376346126}
   - component: {fileID: 7487421951376346127}
   - component: {fileID: 4312984130916635119}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}

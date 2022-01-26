@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: WaterEnemyAttack
   m_EditorClassIdentifier: 
   prefab: {fileID: 72478941353441772, guid: 14847020bb614a64287a11a793d11cc6, type: 3}
+  spawnPrefab: {fileID: 7690776923230661609, guid: 3cd182f9209fee74597ac19bd8d0f12a, type: 3}
   impactPrefab: {fileID: 7771767063320648454, guid: 6268ec1393f6b0d40bb2ec181c2cab5a, type: 3}
   noDamageImpactPrefab: {fileID: 7771767063320648454, guid: 6268ec1393f6b0d40bb2ec181c2cab5a, type: 3}
   fireRate: 0.4

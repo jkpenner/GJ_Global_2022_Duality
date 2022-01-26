@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4835033017067295866}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ProjSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: -6890557043267061935}
   - component: {fileID: 7609856831253799914}
   - component: {fileID: -2848282246575017402}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: WaterEnemyVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,13 +173,25 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3f43fb2dd2fc9c84c838973893fe8bf9, type: 2}
+    - target: {fileID: -6475698432325073768, guid: 31731c7adc9a23c4ca05c24fcf3591f3, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: -6151556266767842861, guid: 31731c7adc9a23c4ca05c24fcf3591f3, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a94ad2e5723f3d648ac33a59e266b412, type: 2}
+    - target: {fileID: 635547659545568360, guid: 31731c7adc9a23c4ca05c24fcf3591f3, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 31731c7adc9a23c4ca05c24fcf3591f3, type: 3}
       propertyPath: m_Name
       value: Enemy_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 31731c7adc9a23c4ca05c24fcf3591f3, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31731c7adc9a23c4ca05c24fcf3591f3, type: 3}
