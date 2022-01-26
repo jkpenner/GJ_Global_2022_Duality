@@ -7,7 +7,9 @@ namespace Duality
     [RequireComponent(typeof(Health))]
     public class EnemyController : MonoBehaviour, IHasSpawnPoint, IWorldObject
     {
-        [SerializeField] float range = 5f;
+        [SerializeField] float pursueRange = 5f;
+        [SerializeField] float shootRange = 3f;
+        [SerializeField] bool shootOnlySameWorld = true;
         [SerializeField] float targetForgetTime = 5f;
 
         [SerializeField] LayerMask playerMask = int.MaxValue;
@@ -94,7 +96,7 @@ namespace Duality
             if (targetPlayer is null)
             {
                 targetPlayer = CombatUtility.GetPlayerInAreaOrAcrossPortal(
-                    transform.position, range, portalMask, playerMask
+                    transform.position, pursueRange, portalMask, playerMask
                 );
             }
 
@@ -106,14 +108,12 @@ namespace Duality
                 var currentSpawnPoint = activeVisual.Shoot.CurrentSpawnPoint;
 
                 targetPlayerDirection = CombatUtility.GetShortestVectorTowardsTarget(
-                    currentSpawnPoint.position, targetPlayer.AITargetingTransform.position, range, portalMask
+                    currentSpawnPoint.position, targetPlayer.AITargetingTransform.position, pursueRange, portalMask
                 );
 
                 CombatUtility.DebugDrawVectorThroughPortal(currentSpawnPoint.position, targetPlayerDirection, Color.green, portalMask);
 
-                activeVisual.Shoot.Fire(
-                    currentSpawnPoint.position + targetPlayerDirection
-                );
+                TryFireAtPlayer(targetPlayerDirection);
             }
             else
             {
@@ -133,6 +133,23 @@ namespace Duality
             }
         }
 
+        private void TryFireAtPlayer(Vector3 targetPlayerDirection)
+        {
+            if (shootOnlySameWorld && targetPlayer.ActiveWorld != activeWorld)
+            {
+                return;
+            }
+
+
+            if (targetPlayerDirection.magnitude > shootRange)
+            {
+                return;
+            }
+
+            var currentSpawnPoint = activeVisual.Shoot.CurrentSpawnPoint;
+            activeVisual.Shoot.Fire(currentSpawnPoint.position + targetPlayerDirection);
+        }
+
         private void CheckIfTargetIsGone()
         {
             if (targetPlayer is null)
@@ -142,7 +159,7 @@ namespace Duality
 
             var isPlayerInArea = CombatUtility.IsPlayerInAreaOrAcrossPortal(
                 transform.position,
-                range,
+                pursueRange,
                 targetPlayer,
                 portalMask,
                 playerMask
@@ -182,9 +199,9 @@ namespace Duality
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.blue;
-            Gizmos.DrawWireSphere(transform.position, range);
+            Gizmos.DrawWireSphere(transform.position, pursueRange);
 
-            foreach (var collider in Physics.OverlapSphere(transform.position, range, portalMask, QueryTriggerInteraction.Collide))
+            foreach (var collider in Physics.OverlapSphere(transform.position, pursueRange, portalMask, QueryTriggerInteraction.Collide))
             {
                 // Check if we overlapped as portal
                 var portal = collider.GetComponent<Portal>();
@@ -197,7 +214,7 @@ namespace Duality
 
                 // Check if there is an target on the otherside of the portal.
                 var distFromPortal = (portal.transform.position - transform.position).magnitude;
-                var remainingRange = Mathf.Max(range - distFromPortal, 0f);
+                var remainingRange = Mathf.Max(pursueRange - distFromPortal, 0f);
 
                 var connectedPosition = portal.ConnectedPortal.transform.position;
 
@@ -240,7 +257,7 @@ namespace Duality
             transform.position = position;
             transform.rotation = rotation;
         }
-        
+
         private void OnKilled()
         {
             if (Spawn is null)
