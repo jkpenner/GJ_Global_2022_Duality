@@ -176,7 +176,18 @@ namespace Duality
             var moveInput = userInput.Player.Move.ReadValue<Vector2>();
             var movement = new Vector3(moveInput.x, 0f, moveInput.y);
             movement = cc.transform.TransformDirection(movement);
-            movement += -transform.up * 2f;
+
+            if (Physics.Raycast(transform.position + transform.up, -transform.up, out var hit, 2f, -1))
+            {
+                movement += -hit.normal * 2f;
+            }
+            else
+            {
+                movement += -transform.up * 2f;
+            }
+
+
+            
 
             cc.Move(movement * moveSpeed * Time.deltaTime);
 
