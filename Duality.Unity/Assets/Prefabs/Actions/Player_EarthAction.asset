@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -39520784, guid: 38858e1a06472884195a3b8b83699c85, type: 3}
+  m_Name: Player_EarthAction
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 72478941353441772, guid: ae8b1bdde49cd46408792d39a5b5dac6, type: 3}
+  spawnPrefab: {fileID: 4977813505571586418, guid: e7fe1d59a3952a14ab1bfde2401a9089, type: 3}
+  impactPrefab: {fileID: 7771767063320648454, guid: 4f2e0cda617528d4b9427aa781c15561, type: 3}
+  noDamageImpactPrefab: {fileID: 7771767063320648454, guid: 4f2e0cda617528d4b9427aa781c15561, type: 3}
+  fireRate: 0.4
+  lifetime: 2
+  speedMultiplier: 1
+  damageAmount: 1
+  damageType: 3

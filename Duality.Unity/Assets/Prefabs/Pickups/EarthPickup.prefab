@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: -795087654, guid: 38858e1a06472884195a3b8b83699c85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gunAsset: {fileID: 11400000, guid: fe1c0e904f6c65c4c9d9214fe67bc13d, type: 2}
+  gunAsset: {fileID: 11400000, guid: 33d0740ae19e59e4282dccb10d616b89, type: 2}
   respawnTime: 10
 --- !u!95 &40755357822752137
 Animator:
